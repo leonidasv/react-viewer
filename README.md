@@ -1,32 +1,22 @@
 # react-viewer
 
-[![NPM version][npm-image]][npm-url] [![](https://travis-ci.org/infeng/react-viewer.svg?branch=master)](https://travis-ci.org/infeng/react-viewer) [![codecov](https://codecov.io/gh/infeng/react-viewer/branch/master/graph/badge.svg)](https://codecov.io/gh/infeng/react-viewer)
-> react image viewer.
+> react image viewer, modded with PureComponents.
 
 ## Introduction
 
-Because I can`t be comfortable using [viewerjs](https://github.com/fengyuanchen/viewerjs) in react, so I created react-viewer to replace it.
-
-## Installation
-
-```bash
-npm install react-viewer --save
-```
+Forked from [infeng/react-viewer](https://github.com/infeng/react-viewer), which turns out to be a wrapper for [fengyuanchen/viewerjs](https://github.com/fengyuanchen/viewerjs).
 
 ## Usage
 
 ```javascript
 import * as React from 'react';
-import Viewer from 'react-viewer';
+import Viewer from './react-viewer';
 import 'react-viewer/dist/index.css';
 
 class App extends React.Component<any, any> {
-  constructor() {
-    super();
 
-    this.state = {
-      visible: false,
-    };
+  this.state = {
+    visible: false,
   }
 
   render() {
@@ -119,5 +109,3 @@ class App extends React.Component<any, any> {
 
 MIT
 
-[npm-image]: https://badge.fury.io/js/react-viewer.svg
-[npm-url]: https://npmjs.org/package/react-viewer
