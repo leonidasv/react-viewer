@@ -19,46 +19,46 @@ export interface ViewerToolbarProps {
 }
 
 export const defaultToolbars: ToolbarConfig[] = [
- {
-   key: 'zoomIn',
-   actionType: ActionType.zoomIn,
- },
- {
-   key: 'zoomOut',
-   actionType: ActionType.zoomOut,
- },
- {
-   key: 'prev',
-   actionType: ActionType.prev,
- },
- {
-   key: 'reset',
-   actionType: ActionType.reset,
- },
- {
-   key: 'next',
-   actionType: ActionType.next,
- },
- {
-   key: 'rotateLeft',
-   actionType: ActionType.rotateLeft,
- },
- {
-   key: 'rotateRight',
-   actionType: ActionType.rotateRight,
- },
- {
-   key: 'scaleX',
-   actionType: ActionType.scaleX,
- },
- {
-   key: 'scaleY',
-   actionType: ActionType.scaleY,
- },
- {
-   key: 'download',
-   actionType: ActionType.download,
- },
+  {
+    key: 'zoomIn',
+    actionType: ActionType.zoomIn,
+  },
+  {
+    key: 'zoomOut',
+    actionType: ActionType.zoomOut,
+  },
+  {
+    key: 'prev',
+    actionType: ActionType.prev,
+  },
+  {
+    key: 'reset',
+    actionType: ActionType.reset,
+  },
+  {
+    key: 'next',
+    actionType: ActionType.next,
+  },
+  {
+    key: 'rotateLeft',
+    actionType: ActionType.rotateLeft,
+  },
+  {
+    key: 'rotateRight',
+    actionType: ActionType.rotateRight,
+  },
+  {
+    key: 'scaleX',
+    actionType: ActionType.scaleX,
+  },
+  {
+    key: 'scaleY',
+    actionType: ActionType.scaleY,
+  },
+  {
+    key: 'download',
+    actionType: ActionType.download,
+  },
 ];
 
 function deleteToolbarFromKey(toolbars: ToolbarConfig[], keys: string[]) {
@@ -67,11 +67,7 @@ function deleteToolbarFromKey(toolbars: ToolbarConfig[], keys: string[]) {
   return targetToolbar;
 }
 
-export default class ViewerToolbar extends React.Component<ViewerToolbarProps, any> {
-
-  constructor() {
-    super();
-  }
+export default class ViewerToolbar extends React.PureComponent<ViewerToolbarProps, any> {
 
   handleAction(config: ToolbarConfig) {
     this.props.onAction(config);
@@ -81,7 +77,7 @@ export default class ViewerToolbar extends React.Component<ViewerToolbarProps, a
     let content = null;
     // default toolbar
     if (typeof ActionType[config.actionType] !== 'undefined') {
-      content = <Icon type={config.actionType}/>;
+      content = <Icon type={config.actionType} />;
     }
     // extra toolbar
     if (config.render) {
@@ -91,10 +87,10 @@ export default class ViewerToolbar extends React.Component<ViewerToolbarProps, a
       <li
         key={config.key}
         className={`${this.props.prefixCls}-btn`}
-        onClick={() => {this.handleAction(config);}}
+        onClick={() => { this.handleAction(config); }}
         data-key={config.key}
       >
-          {content}
+        {content}
       </li>
     );
   }

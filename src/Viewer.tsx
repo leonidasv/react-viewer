@@ -3,13 +3,13 @@ import * as ReactDOM from 'react-dom';
 import ViewerCore from './ViewerCore';
 import ViewerProps from './ViewerProps';
 
-export default class Viewer extends React.Component<ViewerProps, any> {
+export default class Viewer extends React.PureComponent<ViewerProps, any> {
   private defaultContainer: HTMLElement;
   private container: HTMLElement;
   private component: React.ReactNode;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.container = null;
     this.defaultContainer = document.createElement('div');
@@ -21,7 +21,7 @@ export default class Viewer extends React.Component<ViewerProps, any> {
       if (!this.container) {
         if (this.props.container) {
           this.container = this.props.container;
-        }else {
+        } else {
           this.container = this.defaultContainer;
           document.body.appendChild(this.container);
         }
@@ -31,7 +31,7 @@ export default class Viewer extends React.Component<ViewerProps, any> {
         this,
         <ViewerCore
           {...this.props}
-          />,
+        />,
         this.container,
         function () {
           instance.component = this;
@@ -51,7 +51,7 @@ export default class Viewer extends React.Component<ViewerProps, any> {
   }
 
   componentWillUnmount() {
-    if (this.props.visible &&  this.props.onClose) {
+    if (this.props.visible && this.props.onClose) {
       this.props.onClose();
     }
     this.removeViewer();
@@ -65,7 +65,7 @@ export default class Viewer extends React.Component<ViewerProps, any> {
           document.body.removeChild(this.container);
         }
         this.container = nextProps.container;
-      }else {
+      } else {
         this.container = this.defaultContainer;
         document.body.appendChild(this.container);
       }

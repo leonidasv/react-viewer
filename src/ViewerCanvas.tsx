@@ -28,17 +28,13 @@ export interface ViewerCanvasState {
   mouseY?: number;
 }
 
-export default class ViewerCanvas extends React.Component<ViewerCanvasProps, ViewerCanvasState> {
+export default class ViewerCanvas extends React.PureComponent<ViewerCanvasProps, ViewerCanvasState> {
 
-  constructor() {
-    super();
-
-    this.state = {
-      isMouseDown: false,
-      mouseX: 0,
-      mouseY: 0,
-    };
-  }
+  state = {
+    isMouseDown: false,
+    mouseX: 0,
+    mouseY: 0,
+  };
 
   componentDidMount() {
     if (this.props.drag) {
@@ -143,10 +139,10 @@ export default class ViewerCanvas extends React.Component<ViewerCanvasProps, Vie
     let imgNode = null;
     if (this.props.imgSrc !== '') {
       imgNode = <img
-      className={imgClass}
-      src={this.props.imgSrc}
-      style={imgStyle}
-      onMouseDown={this.handleMouseDown}
+        className={imgClass}
+        src={this.props.imgSrc}
+        style={imgStyle}
+        onMouseDown={this.handleMouseDown}
       />;
     }
     if (this.props.loading) {
@@ -159,16 +155,16 @@ export default class ViewerCanvas extends React.Component<ViewerCanvasProps, Vie
             alignItems: 'center',
           }}
         >
-          <Loading/>
+          <Loading />
         </div>
       );
     }
 
     return (
       <div
-      className={`${this.props.prefixCls}-canvas`}
-      onMouseDown={this.handleCanvasMouseDown}
-      style={style}
+        className={`${this.props.prefixCls}-canvas`}
+        onMouseDown={this.handleCanvasMouseDown}
+        style={style}
       >
         {imgNode}
       </div>

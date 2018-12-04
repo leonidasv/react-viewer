@@ -4,10 +4,7 @@ export interface LoadingProps {
   style?: React.CSSProperties;
 }
 
-export default class Loading extends React.Component<LoadingProps, any> {
-  constructor() {
-    super();
-  }
+export default class Loading extends React.PureComponent<LoadingProps, any> {
 
   render() {
     let cls = 'circle-loading';

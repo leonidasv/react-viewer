@@ -8,7 +8,7 @@ export interface ViewerNavProps {
   onChangeImg: (index: number) => void;
 }
 
-export default class ViewerNav extends React.Component<ViewerNavProps, any> {
+export default class ViewerNav extends React.PureComponent<ViewerNavProps, any> {
   static defaultProps = {
     activeIndex: 0,
   };
@@ -21,9 +21,9 @@ export default class ViewerNav extends React.Component<ViewerNavProps, any> {
   }
 
   render() {
-    let marginLeft = `calc(50% - ${this.props.activeIndex + 1} * 31px)`;
+    let marginLeft = (Math.ceil(this.props.images.length / 2) - this.props.activeIndex - 1) * 1.5 * 30;
     let listStyle = {
-      marginLeft: marginLeft
+      marginLeft: `${marginLeft}px`,
     };
 
     return (
@@ -31,13 +31,13 @@ export default class ViewerNav extends React.Component<ViewerNavProps, any> {
         <ul className={`${this.props.prefixCls}-list ${this.props.prefixCls}-list-transition`} style={listStyle}>
           {this.props.images.map((item, index) =>
             <li
-            key={index}
-            className={index === this.props.activeIndex ? 'active' : ''}
-            onClick={() => { this.handleChangeImg(index); }}
+              key={index}
+              className={index === this.props.activeIndex ? 'active' : ''}
+              onClick={() => { this.handleChangeImg(index); }}
             >
               <img src={item.src} alt={item.alt} />
             </li>
-            )
+          )
           }
         </ul>
       </div>

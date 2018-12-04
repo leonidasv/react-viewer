@@ -18,7 +18,7 @@ export interface IconProps {
   type: ActionType;
 }
 
-export default class Icon extends React.Component<IconProps, any> {
+export default class Icon extends React.PureComponent<IconProps, any> {
   render() {
     let prefixCls = 'react-viewer-icon';
 

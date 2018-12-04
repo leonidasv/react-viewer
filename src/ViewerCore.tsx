@@ -7,7 +7,7 @@ import ViewerProps, { ImageDecorator, ToolbarConfig } from './ViewerProps';
 import Icon, { ActionType } from './Icon';
 import * as constants from './constants';
 
-function noop() {}
+function noop() { }
 
 const transitionDuration = 300;
 
@@ -29,7 +29,7 @@ export interface ViewerCoreState {
   loadFailed?: boolean;
 }
 
-export default class ViewerCore extends React.Component<ViewerProps, ViewerCoreState> {
+export default class ViewerCore extends React.PureComponent<ViewerProps, ViewerCoreState> {
   static defaultProps = {
     visible: false,
     onClose: noop,
